@@ -19,12 +19,11 @@ esta zona, por lo tanto, se busca facilitar y llevar a cabo un sistema que permi
 classDiagram
     class Servidor {
         - aldeanosRegistrados: List~Aldeano~
-        - whitelistUsuarios: List~Usuario~
-        + hacerLogin(nombreUsuario: String): Usuario
+        + UserLogin(nombreUsuario: String): Usuario
         + buscarTradeo(objeto: String): List~Aldeano~
         + registrarAldeano(usuario: Usuario, aldeano: Aldeano): boolean
-        + matarAldeano(usuario: Usuario, idAldeano: int): boolean
-        + banearUsuario(admin: Admin, usuarioABanear: Usuario): boolean
+        + removerAldeano(usuario: Usuario, idAldeano: int): boolean
+        + banUser(admin: Admin, usuarioABanear: Usuario): boolean
     }
 
     class Aldeano {
@@ -46,12 +45,13 @@ classDiagram
     }
 
     class Noob {
-        + consultarTradeosSimples()
+        + consultarTradeos()
     }
     
     class Pro {
-        + verInventarioCompleto()
+        + mostarListaAldeanos()
         + registrarNuevoAldeano()
+        + removerAldeano()
     }
     
     class Admin {
