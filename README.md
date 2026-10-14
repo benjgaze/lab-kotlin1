@@ -17,22 +17,56 @@ esta zona, por lo tanto, se busca facilitar y llevar a cabo un sistema que permi
 
 ```mermaid
 classDiagram
+    class Servidor {
+        - aldeanosRegistrados: List~Aldeano~
+        - whitelistUsuarios: List~Usuario~
+        + hacerLogin(nombreUsuario: String): Usuario
+        + buscarTradeo(objeto: String): List~Aldeano~
+        + registrarAldeano(usuario: Usuario, aldeano: Aldeano): boolean
+        + matarAldeano(usuario: Usuario, idAldeano: int): boolean
+        + banearUsuario(admin: Admin, usuarioABanear: Usuario): boolean
+    }
 
     class Aldeano {
         <<abstract>>
+        # idUnico: int
+        # coordenadasXYZ: String
+        # profesion: String
+        # nivelExperiencia: int
+        + getIntercambios()
+        + getCoordenadas()
     }
 
     class Usuario {
         <<abstract>>
+        # uuid: String
+        # nickname: String
+        + verMapaAldeanos()
     }
 
-    class Noob
-    class Pro
-    class Admin
+    class Noob {
+        + consultarTradeosSimples()
+    }
+    
+    class Pro {
+        + verInventarioCompleto()
+        + registrarNuevoAldeano()
+    }
+    
+    class Admin {
+        + expulsarUsuario()
+        + reiniciarZona()
+    }
 
-    class Granjero
-    class Herrero
-    class Bibliotecario
+    class Granjero {
+        + getCultivos()
+    }
+    class Herrero {
+        + getArmaduras()
+    }
+    class Bibliotecario {
+        + getLibrosEncantados()
+    }
 
     Aldeano <|-- Granjero
     Aldeano <|-- Herrero
@@ -41,4 +75,8 @@ classDiagram
     Usuario <|-- Noob
     Usuario <|-- Pro
     Usuario <|-- Admin
+
+    Servidor *-- Aldeano : Controla
+    Servidor *-- Usuario : Administra
+    Usuario ..> Servidor : Envía comandos a
 ```
