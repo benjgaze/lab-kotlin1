@@ -29,17 +29,18 @@ classDiagram
 
     class Aldeano {
         <<abstract>>
-        # idUnico: int
+        # id: int
         # coordenadasXYZ: String
         # profesion: String
-        # nivelExperiencia: int
+        # nivel: int
         + getIntercambios()
         + getCoordenadas()
+        + getDatos ()
+        
     }
 
     class Usuario {
         <<abstract>>
-        # uuid: String
         # nickname: String
         + verMapaAldeanos()
     }
