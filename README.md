@@ -29,11 +29,12 @@ classDiagram
 
     class Aldeano {
         <<abstract>>
-        # id: int
-        # posicionMundo: String 
+        # id <<abstract>>: int
+        # nombre: String
+        # posicion: String 
         # nivel: int
-        + getIntercambios()
-        + getDatos()
+        + verIntercambios()
+        + verDatos()
     }
 
     class Usuario {
@@ -44,7 +45,6 @@ classDiagram
 
     class Noob {
         + consultarTradeos()
-        + mapa()
     }
     
     class Pro {
