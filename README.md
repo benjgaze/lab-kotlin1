@@ -10,7 +10,7 @@ simplemente confiando en su memoria. Esto genera varios problemas:
 
 1. Pérdida de tiempo: Los jugadores olvidan qué aldeano vende qué objeto exacto y pasan
     minutos buscando sin rumbo.
-2. Descontrol espacial: No hay registro claro de en qué coordenadas exactas se
+2. Posición: No hay registro claro de en qué coordenadas exactas se
     encuentra el aldeano que vende un encantamiento crucial (como Mending/Reparación).
 3. Falta de administración: Cualquier jugador nuevo puede entrar, alterar los intercambios
     o perder aldeanos sin que haya un registro de quién hizo qué.
