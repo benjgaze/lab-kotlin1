@@ -116,6 +116,4 @@ classDiagram
     Servidor "1" o-- "0..*" Usuario : Administra
     Usuario ..> Servidor : Interactua con
 ```
-**Este documento marca las bases lógicas y requisitos para el desarrollo de la aplicación de
-consola de gestión de aldeanos.**
 ![image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN60cRLfe2wYPUMDscFPGhzHs6EzydyBI1b-2ZswZi1nxPdUkII5QLp0g&s=10)
