@@ -11,8 +11,6 @@ esta zona, por lo tanto, se busca facilitar y llevar a cabo un sistema que permi
 | Pro | Vista detallada del registro y permisos para registrar aldeanos en el sistema sistema |
 | Admin | Tiene el control total del sistema, encargado principalmente de mantener la estabilidad en el sistema |
 
-![image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN60cRLfe2wYPUMDscFPGhzHs6EzydyBI1b-2ZswZi1nxPdUkII5QLp0g&s=10)
-
 ## Diagrama UML (Avance)
 
 ```mermaid
@@ -91,3 +89,4 @@ classDiagram
     %% Dependencia: El usuario requiere conocer al servidor para enviarle instrucciones.
     Usuario ..> Servidor : Interactua con
 ```
+![image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN60cRLfe2wYPUMDscFPGhzHs6EzydyBI1b-2ZswZi1nxPdUkII5QLp0g&s=10)
