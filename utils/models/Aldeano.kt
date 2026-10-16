@@ -18,6 +18,7 @@ abstract class Aldeano(
         println("Profesion: $profesion")
         println("=====================================")
     }
+    
 }
 
 class Granjero(
