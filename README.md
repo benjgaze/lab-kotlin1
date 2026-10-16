@@ -41,6 +41,7 @@ A continuación, se detalla la estructura lógica del sistema:
 
 ```mermaid
 classDiagram
+    direction LR
     class Servidor {
         - aldeanosRegistrados: List~Aldeano~
         - usuariosConectados: List~Usuario~
