@@ -82,6 +82,10 @@ classDiagram
         + verDatos()
     }
 
+    class Tradeo {
+
+    }
+
     %% LAS PROFESIONES DE MINECRAFT ASIGNADAS
     class Granjero
     class Bibliotecario
