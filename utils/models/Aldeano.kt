@@ -1,9 +1,12 @@
 abstract class Aldeano(
-    protected val id: Int,
     protected val nombre: String,
-    protected val coordenadas: String,
-    protected val nivel: Int
+    protected val coordenadas: String, // Considerar cambio a var
+    protected val nivel: Int // Considerar cambio a var
 ) {
+    constructor(nombre: String, coordenadas: String, nivel: Int) : this (
+        nombre = "" // Crear generador de nombres aleatorios
+    )
+    abstract val id: Int
     abstract val profesion: String
 
     fun getDatos() {
@@ -15,16 +18,13 @@ abstract class Aldeano(
         println("Profesion: $profesion")
         println("=====================================")
     }
-    abstract fun getIntercambios()
-    abstract fun getCoordenadas()
 }
 
 class Granjero(
-    id: Int,
     nombre: String,
-    coordenadasXYZ: String,
+    coordenadas: String,
     nivel: Int
-) : Aldeano(id, nombre, coordenadasXYZ, nivel) {
-    // Constructor secundario que lea lista de id's para asignar uno libre y generar nombre aleatorio en caso de no introducir
+) : Aldeano(nombre, coordenadas, nivel) {
+    override val id: Int = "0" // Crear listas de ids del sistema y asignar siempre la primera siguiente libre
     override val profesion: String = "Granjero"
 }
