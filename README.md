@@ -49,12 +49,12 @@ classDiagram
     }
     
     class Pro {
-        - registrarNuevoAldeano(): Bool
-        - removerAldeano(String): Bool
+        - registrarNuevoAldeano(nombre: String): Bool
+        - removerAldeano(id: int): Bool
     }
     
     class Admin {
-        - expulsarUsuario()
+        - expulsarUsuario(nickname: String)
         - mostrarDatos(): String
     }
 
@@ -67,7 +67,7 @@ classDiagram
     class Clerigo
     class Cartografo
 
-    %% Herencia: Polimorfismo y abstracción de los Aldeanos
+    %% HERENCIA
     Aldeano <|-- Granjero
     Aldeano <|-- Bibliotecario
     Aldeano <|-- HerreroArmas
@@ -76,18 +76,13 @@ classDiagram
     Aldeano <|-- Clerigo
     Aldeano <|-- Cartografo
 
-    %% Herencia: Abstracción de los Usuarios
     Usuario <|-- Noob
     Usuario <|-- Pro
     Usuario <|-- Admin
 
-    %% MULTIPLICIDAD Y RELACIONES
-    %% Composición (Rombo lleno): Dependencia fuerte. El servidor es dueño del registro de aldeanos.
     Servidor "1" *-- "0..*" Aldeano : Controla
 
-    %% Agregación (Rombo vacío): Dependencia débil. El servidor agrupa usuarios, pero estos existen por su cuenta.
     Servidor "1" o-- "0..*" Usuario : Administra
 
-    %% Dependencia: El usuario requiere conocer al servidor para enviarle instrucciones.
     Usuario ..> Servidor : Interactua con
 ```
