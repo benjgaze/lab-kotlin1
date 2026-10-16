@@ -24,7 +24,7 @@ abstract class Aldeano(
         println("=====================================")
     }
     
-    abstract fun verIntercambios() // Crear clase
+    abstract fun verIntercambios()
     
 }
 
