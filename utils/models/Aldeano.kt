@@ -6,8 +6,8 @@ abstract class Aldeano(
     constructor(nombre: String, coordenadas: String, nivel: Int) : this (
         nombre = "" // Crear generador de nombres aleatorios
     )
-    abstract val id: Int
-    abstract val profesion: String
+    protected abstract val id: Int
+    protected abstract val profesion: String
 
     fun getDatos() {
         println("=====================================")
