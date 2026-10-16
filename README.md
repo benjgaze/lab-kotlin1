@@ -29,7 +29,7 @@ classDiagram
 
     class Aldeano {
         <<abstract>>
-        # id <<abstract>>: int
+        # id: int*
         # nombre: String
         # posicion: String 
         # nivel: int
