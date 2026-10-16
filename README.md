@@ -30,6 +30,7 @@ classDiagram
     class Aldeano {
         <<abstract>>
         # id: int*
+        # profesion: String*
         # nombre: String
         # posicion: String 
         # nivel: int
@@ -40,22 +41,21 @@ classDiagram
     class Usuario {
         <<abstract>>
         # nickname: String
-        + verMapaAldeanos()
+        # consultarTradeos()
+        # verMapaAldeanos()
     }
 
     class Noob {
-        + consultarTradeos()
     }
     
     class Pro {
-        + mostrarListaAldeanos()
-        + registrarNuevoAldeano()
-        + removerAldeano()
+        - registrarNuevoAldeano(): Bool
+        - removerAldeano(String): Bool
     }
     
     class Admin {
-        + expulsarUsuario()
-        - mostrarDatos()
+        - expulsarUsuario()
+        - mostrarDatos(): String
     }
 
     %% LAS PROFESIONES DE MINECRAFT ASIGNADAS
