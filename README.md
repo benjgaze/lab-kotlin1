@@ -32,7 +32,7 @@ classDiagram
         # nombre: String
         # posicion: String 
         # nivel: int
-        + verIntercambios()
+        + verIntercambios()*
         + verDatos()
     }
 
