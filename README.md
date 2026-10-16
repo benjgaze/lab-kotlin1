@@ -51,23 +51,6 @@ classDiagram
         + banearUsuario(admin: Admin, usuarioABanear: Usuario): boolean
     }
 
-    class tradeo {
-        
-    }
-
-
-
-    class Aldeano {
-        <<abstract>>
-        # id: int*
-        # profesion: String*
-        # nombre: String
-        # posicion: String 
-        # nivel: int
-        + verIntercambios()*
-        + verDatos()
-    }
-
     class Usuario {
         <<abstract>>
         # nickname: String
@@ -86,6 +69,17 @@ classDiagram
     class Admin {
         - expulsarUsuario(nickname: String)
         - mostrarDatos(): String
+    }
+
+    class Aldeano {
+        <<abstract>>
+        # id: int*
+        # profesion: String*
+        # nombre: String
+        # posicion: String 
+        # nivel: int
+        + verIntercambios()*
+        + verDatos()
     }
 
     %% LAS PROFESIONES DE MINECRAFT ASIGNADAS
@@ -110,7 +104,7 @@ classDiagram
     Usuario <|-- Pro
     Usuario <|-- Admin
 
-
+    %% RELACIONES
     Aldeano "1" *-- "0..*" Tradeo
     Servidor "1" *-- "0..*" Aldeano : Controla
     Servidor "1" o-- "0..*" Usuario : Administra
