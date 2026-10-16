@@ -14,7 +14,7 @@ abstract class Aldeano(
     protected abstract val id: Int
     protected abstract val profesion: String
 
-    fun getDatos() {
+    fun verDatos() {
         println("=====================================")
         println("Id: $id")
         println("Nombre: $nombre")
@@ -23,6 +23,8 @@ abstract class Aldeano(
         println("Profesion: $profesion")
         println("=====================================")
     }
+    
+    abstract fun verIntercambios() // Crear clase
     
 }
 
