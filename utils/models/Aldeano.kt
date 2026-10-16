@@ -1,6 +1,6 @@
 abstract class Aldeano(
     protected val nombre: String,
-    protected val coordenadas: String, // Considerar cambio a var
+    protected val posicion: String, // Considerar cambio a var
     protected val nivel: Int // Considerar cambio a var
 ) {
     constructor(nombre: String, coordenadas: String, nivel: Int) : this (
