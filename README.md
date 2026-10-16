@@ -19,23 +19,21 @@ esta zona, por lo tanto, se busca facilitar y llevar a cabo un sistema que permi
 classDiagram
     class Servidor {
         - aldeanosRegistrados: List~Aldeano~
-        + UserLogin(nombreUsuario: String): Usuario
+        - usuariosConectados: List~Usuario~
+        + iniciarSesion(nickname: String): Usuario
         + buscarTradeo(objeto: String): List~Aldeano~
-        + registrarAldeano(usuario: Usuario, aldeano: Aldeano): boolean
-        + removerAldeano(usuario: Usuario, idAldeano: int): boolean
-        + banUser(admin: Admin, usuarioABanear: Usuario): boolean
+        + registrarAldeano(pro: Pro, aldeano: Aldeano): boolean
+        + removerAldeano(pro: Pro, idAldeano: int): boolean
+        + banearUsuario(admin: Admin, usuarioABanear: Usuario): boolean
     }
 
     class Aldeano {
         <<abstract>>
         # id: int
-        # coordenadasXYZ: String
-        # profesion: String
+        # posicionMundo: String 
         # nivel: int
         + getIntercambios()
-        + getCoordenadas()
-        + getDatos ()
-        
+        + getDatos()
     }
 
     class Usuario {
@@ -46,38 +44,50 @@ classDiagram
 
     class Noob {
         + consultarTradeos()
+        + mapa()
     }
     
     class Pro {
-        + mostarListaAldeanos()
+        + mostrarListaAldeanos()
         + registrarNuevoAldeano()
         + removerAldeano()
     }
     
     class Admin {
         + expulsarUsuario()
-        + reiniciarZona()
+        - mostrarDatos()
     }
 
-    class Granjero {
-        + getCultivos()
-    }
-    class Herrero {
-        + getArmaduras()
-    }
-    class Bibliotecario {
-        + getLibrosEncantados()
-    }
+    %% LAS PROFESIONES DE MINECRAFT ASIGNADAS
+    class Granjero
+    class Bibliotecario
+    class HerreroArmas
+    class HerreroHerramientas
+    class Flechero
+    class Clerigo
+    class Cartografo
 
+    %% Herencia: Polimorfismo y abstracción de los Aldeanos
     Aldeano <|-- Granjero
-    Aldeano <|-- Herrero
     Aldeano <|-- Bibliotecario
+    Aldeano <|-- HerreroArmas
+    Aldeano <|-- HerreroHerramientas
+    Aldeano <|-- Flechero
+    Aldeano <|-- Clerigo
+    Aldeano <|-- Cartografo
 
+    %% Herencia: Abstracción de los Usuarios
     Usuario <|-- Noob
     Usuario <|-- Pro
     Usuario <|-- Admin
 
-    Servidor *-- Aldeano : Controla
-    Servidor *-- Usuario : Administra
-    Usuario ..> Servidor : Envía comandos a
+    %% MULTIPLICIDAD Y RELACIONES
+    %% Composición (Rombo lleno): Dependencia fuerte. El servidor es dueño del registro de aldeanos.
+    Servidor "1" *-- "0..*" Aldeano : Controla
+
+    %% Agregación (Rombo vacío): Dependencia débil. El servidor agrupa usuarios, pero estos existen por su cuenta.
+    Servidor "1" o-- "0..*" Usuario : Administra
+
+    %% Dependencia: El usuario requiere conocer al servidor para enviarle instrucciones.
+    Usuario ..> Servidor : Interactua con
 ```
