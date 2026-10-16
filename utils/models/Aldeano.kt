@@ -4,7 +4,7 @@ abstract class Aldeano(
     protected val nivel: Int // Considerar cambio a var
 ) {
     init {
-        // MANEJAR CONDICIONES CON ERRORES
+        // USAR REQUIRE
     }
     constructor(nombre: String, posicion: String, nivel: Int) : this (
         nombre = "", // Crear generador de nombres aleatorios
