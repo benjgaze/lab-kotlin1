@@ -1,6 +1,7 @@
-# Minecraft Villager Management 
+# Minecraft Villager Management
 
-## Descripción del problema:
+## Descripción del problema
+
 En los mundos multijugador técnicos o de supervivencia a largo plazo en Minecraft, es común agrupar
 decenas de aldeanos en zonas conocidas como "Trading Halls" (salas de comercio).
 Sin embargo, a medida que la zona crece, la cantidad de aldeanos se vuelve inmanejable.
@@ -21,12 +22,14 @@ deseado, conocer sus coordenadas exactas y restringir quién puede añadir o eli
 de la base de datos.
 
 Alcance de esta versión:
+
 - Sistema interactivo por consola.
 - Datos almacenados temporalmente en memoria durante la ejecución.
 - Fuera de alcance: Modificaciones directas dentro del juego (no es un mod, es una
   herrramienta externa de gestión).
 
-## Usuarios del sistema:
+## Usuarios del sistema
+
 El sistema divide a los jugadores en tres categorias según su nivel de confianza y experiencia en
 el servidor:
 
@@ -37,6 +40,7 @@ el servidor:
 | Admin | Tiene el control total. Se encarga de mantener el orden, con la<br>capacidad exclusiva de expulsar (banear) a usuarios problemáticos<br>del sistema. |
 
 ## Diagrama UML (Avance)
+
 A continuación, se detalla la estructura lógica del sistema:
 
 ```mermaid
@@ -74,21 +78,26 @@ classDiagram
 
     class Aldeano {
         <<abstract>>
-        # id: int*
-        # profesion: String*
-        # nombre: String
-        # posicion: String 
-        # nivel: int
-        + verIntercambios()*
-        + verDatos()
+        
+        + nombre: String?
+        + posicion: String
+        + profesion: String*
+        - id: Int
+        - tradeos: MutableList~Tradeo~
+        + verIntercambios(): List~Tradeo~
+        + agregarTradeo(itemPago: String, cantidadPago: Int, itemVende: String, cantidadVende: Int): Boolean
     }
 
     class Tradeo {
-
+        + itemPago: String
+        + cantidadPago: Int
+        + itemVende: String
+        + cantidadVende: Int 
     }
 
-    %% LAS PROFESIONES DE MINECRAFT ASIGNADAS
-    class Granjero
+    class Granjero {
+        + profesion: String
+    }
     class Bibliotecario
     class HerreroArmas
     class HerreroHerramientas
@@ -115,4 +124,5 @@ classDiagram
     Servidor "1" o-- "0..*" Usuario : Administra
     Usuario ..> Servidor : Interactua con
 ```
+
 ![image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN60cRLfe2wYPUMDscFPGhzHs6EzydyBI1b-2ZswZi1nxPdUkII5QLp0g&s=10)
