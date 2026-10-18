@@ -7,6 +7,7 @@ package cl.ucm.models
  * Se puede ver una lista con estos codigos y se solicita al usuario indicar código + cantidades
  * la lista de items seria abstract protected val (no mutable)
  * la función agregar tradeo debe verificar código válido
+ * PD: polimorfismo se verá mas en clases Usuario, aqui incluso podría usarse solo Aldeano ya que lo único que cambia es profesion y nada más
  */
 
 
@@ -15,8 +16,11 @@ abstract class Aldeano(
     val posicion: String
 ) {
     init {
-        require(posicion.isNotBlank) println("Posición no ingresada.")
+        require(posicion.isNotBlank()) {"Posición no ingresada."}
     }
+    
+    constructor(posicion: String): this(null, posicion)
+    
     private val id: Int = 0 // Luego hacer una lista con IDs para asignar la sgte. libre
     abstract val profesion: String
     private val tradeos: MutableList<Tradeo> = mutableListOf()
@@ -43,6 +47,6 @@ abstract class Aldeano(
 class Granjero(
     nombre: String? = null, //Considerar usar constructor secundario  de manera general en la superclase
     posicion: String
-) : Aldeano(posicion, nombre) {
+) : Aldeano(nombre, posicion) {
     override val profesion: String = "Granjero"
 }
