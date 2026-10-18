@@ -84,7 +84,7 @@ classDiagram
         + profesion: String*
         - id: Int
         - tradeos: MutableList~Tradeo~
-        + verIntercambios(): List~Tradeo~
+        + obtenerTradeo(): List~Tradeo~
         + agregarTradeo(itemPago: String, cantidadPago: Int, itemVende: String, cantidadVende: Int): Boolean
     }
 
