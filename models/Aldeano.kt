@@ -5,7 +5,8 @@ package cl.ucm.models
  * Hacer lista con ITEMS posibles de cada aldeano segun su profesion
  * Cada ITEM tiene un código arbitrario que lo identifica
  * Se puede ver una lista con estos codigos y se solicita al usuario indicar código + cantidades
- * la lista de items seria private abstract y la función agregar tradeo se volvería abstract para verificar items correcto para cada subclase
+ * la lista de items seria abstract protected val (no mutable)
+ * la función agregar tradeo debe verificar código válido
  */
 
 
