@@ -46,14 +46,23 @@ A continuación, se detalla la estructura lógica del sistema:
 ```mermaid
 classDiagram
     direction LR
+    
     class Servidor {
+        <<Singleton>>
+        - instancia: Servidor
         - aldeanosRegistrados: List~Aldeano~
         - usuariosConectados: List~Usuario~
+        + getInstance(): Servidor
         + iniciarSesion(nickname: String): Usuario
         + buscarTradeo(objeto: String): List~Aldeano~
         + registrarAldeano(pro: Pro, aldeano: Aldeano): boolean
         + removerAldeano(pro: Pro, idAldeano: int): boolean
         + banearUsuario(admin: Admin, usuarioABanear: Usuario): boolean
+    }
+
+    class AldeanoFactory {
+        <<Factory>>
+        + crearAldeano(profesion: String, nombre: String, posicion: String): Aldeano
     }
 
     class Usuario {
@@ -64,6 +73,7 @@ classDiagram
     }
 
     class Noob {
+        + consultarNivel()
     }
     
     class Pro {
@@ -78,32 +88,55 @@ classDiagram
 
     class Aldeano {
         <<abstract>>
-        
-        + nombre: String?
-        + posicion: String
-        + profesion: String*
+        - nombre: String?
+        - posicion: String
+        - profesion: String
         - id: Int
+        - isZombificado: Boolean
+        - multiplicadorDescuento: Double
         - tradeos: MutableList~Tradeo~
         + obtenerTradeo(): List~Tradeo~
         + agregarTradeo(itemPago: String, cantidadPago: Int, itemVende: String, cantidadVende: Int): Boolean
+        + curarZombi()
     }
 
     class Tradeo {
-        + itemPago: String
-        + cantidadPago: Int
-        + itemVende: String
-        + cantidadVende: Int 
+        - itemPago: String
+        - cantidadPago: Int
+        - itemVende: String
+        - cantidadVende: Int 
+        + aplicarDescuento(multiplicador: Double): Int
     }
 
     class Granjero {
-        + profesion: String
+        - tipoSemillaPrincipal: String
+        + recolectarCultivos()
     }
-    class Bibliotecario
-    class HerreroArmas
-    class HerreroHerramientas
-    class Flechero
-    class Clerigo
-    class Cartografo
+    
+    class Bibliotecario {
+        - tieneLibrosMending: Boolean
+        + desencantarLibro()
+    }
+    
+    class HerreroArmas {
+        - materialEspecialidad: String
+    }
+    
+    class HerreroHerramientas {
+        - reparaHerramientas: Boolean
+    }
+    
+    class Flechero {
+        - fabricaFlechasEfecto: Boolean
+    }
+    
+    class Clerigo {
+        - nivelMagia: Int
+    }
+    
+    class Cartografo {
+        - mapasExplorados: Int
+    }
 
     %% HERENCIA
     Aldeano <|-- Granjero
@@ -123,6 +156,7 @@ classDiagram
     Servidor "1" *-- "0..*" Aldeano : Controla
     Servidor "1" o-- "0..*" Usuario : Administra
     Usuario ..> Servidor : Interactua con
+    AldeanoFactory ..> Aldeano : Instancia
 ```
 
 ![image](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN60cRLfe2wYPUMDscFPGhzHs6EzydyBI1b-2ZswZi1nxPdUkII5QLp0g&s=10)
